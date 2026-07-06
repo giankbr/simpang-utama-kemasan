@@ -4,6 +4,9 @@ import { useState } from 'react'
 import { button3d } from '@/lib/button-3d'
 import { cn } from '@/lib/utils'
 import { whatsappUrl } from '@/lib/site'
+import Reveal from '@/components/animate/reveal'
+import StaggerReveal from '@/components/animate/stagger-reveal'
+import { usePressEffect } from '@/hooks/use-press-effect'
 import {
   IconChevronDown,
   IconHelp,
@@ -91,12 +94,13 @@ export default function FaqSection({
   className,
 }: FaqSectionProps) {
   const [openIndex, setOpenIndex] = useState(0)
+  const whatsappRef = usePressEffect<HTMLAnchorElement>()
 
   return (
     <section className={cn('py-16 md:py-24 bg-light-gray', className)}>
       <div className="max-w-7xl mx-auto px-4">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-14 items-start">
-          <div className="lg:col-span-4 xl:col-span-5">
+          <Reveal className="lg:col-span-4 xl:col-span-5">
             <div className="lg:sticky lg:top-28">
               <div className="w-14 h-14 rounded-2xl bg-primary/10 flex items-center justify-center mb-6">
                 <IconHelp size={28} stroke={1.5} className="text-primary" />
@@ -109,29 +113,31 @@ export default function FaqSection({
                   Tim kami siap bantu via WhatsApp dalam hitungan menit.
                 </p>
                 <a
+                  ref={whatsappRef}
                   href={whatsappUrl(decodeURIComponent(whatsappMessage))}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className={button3d('primary', 'px-6 py-2.5 text-sm w-full sm:w-auto')}
+                  className={button3d('primary', 'px-6 py-2.5 text-sm w-full sm:w-auto will-change-transform')}
                 >
                   <IconBrandWhatsapp size={18} stroke={1.5} />
                   Tanya Sekarang
                 </a>
               </div>
             </div>
-          </div>
+          </Reveal>
 
-          <div className="lg:col-span-8 xl:col-span-7 space-y-3">
+          <StaggerReveal className="lg:col-span-8 xl:col-span-7 space-y-3" stagger={0.1}>
             {faqs.map((faq, index) => {
               const isOpen = openIndex === index
               return (
                 <div
                   key={faq.question}
-                  className={`bg-white rounded-2xl border transition-all duration-300 overflow-hidden ${
+                  className={cn(
+                    'bg-white rounded-2xl border transition-all duration-300 overflow-hidden',
                     isOpen
                       ? 'border-primary/30 shadow-lg shadow-primary/5'
-                      : 'border-border shadow-sm hover:shadow-md'
-                  }`}
+                      : 'border-border shadow-sm hover:shadow-md',
+                  )}
                 >
                   <button
                     type="button"
@@ -140,9 +146,10 @@ export default function FaqSection({
                     aria-expanded={isOpen}
                   >
                     <div
-                      className={`w-11 h-11 rounded-xl flex items-center justify-center flex-shrink-0 transition-colors ${
-                        isOpen ? 'bg-primary text-white' : 'bg-primary/10 text-primary'
-                      }`}
+                      className={cn(
+                        'w-11 h-11 rounded-xl flex items-center justify-center flex-shrink-0 transition-colors',
+                        isOpen ? 'bg-primary text-white' : 'bg-primary/10 text-primary',
+                      )}
                     >
                       <faq.Icon size={22} stroke={1.5} />
                     </div>
@@ -152,15 +159,17 @@ export default function FaqSection({
                     <IconChevronDown
                       size={20}
                       stroke={1.5}
-                      className={`text-primary flex-shrink-0 transition-transform duration-300 ${
-                        isOpen ? 'rotate-180' : ''
-                      }`}
+                      className={cn(
+                        'text-primary flex-shrink-0 transition-transform duration-300',
+                        isOpen && 'rotate-180',
+                      )}
                     />
                   </button>
                   <div
-                    className={`grid transition-all duration-300 ${
-                      isOpen ? 'grid-rows-[1fr] opacity-100' : 'grid-rows-[0fr] opacity-0'
-                    }`}
+                    className={cn(
+                      'grid transition-all duration-300',
+                      isOpen ? 'grid-rows-[1fr] opacity-100' : 'grid-rows-[0fr] opacity-0',
+                    )}
                   >
                     <div className="overflow-hidden">
                       <p className="text-gray-600 text-sm md:text-base leading-relaxed px-5 md:px-6 pb-5 md:pb-6 pl-[4.75rem] md:pl-[5.25rem]">
@@ -171,7 +180,7 @@ export default function FaqSection({
                 </div>
               )
             })}
-          </div>
+          </StaggerReveal>
         </div>
       </div>
     </section>

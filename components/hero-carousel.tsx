@@ -1,7 +1,9 @@
 'use client'
 
-import { useState, useEffect } from 'react'
+import { useState, useEffect, useRef } from 'react'
 import { IconChevronLeft, IconChevronRight } from '@tabler/icons-react'
+import { gsap, useGSAP } from '@/lib/gsap'
+import { usePressEffect } from '@/hooks/use-press-effect'
 import { whatsappUrl } from '@/lib/site'
 
 const WHATSAPP_URL = whatsappUrl(
@@ -34,6 +36,45 @@ const slides = [
 
 export default function HeroCarousel() {
   const [current, setCurrent] = useState(0)
+  const sectionRef = useRef<HTMLElement>(null)
+  const slideRefs = useRef<(HTMLDivElement | null)[]>([])
+  const whatsappRef = useRef<HTMLAnchorElement>(null)
+  const prevBtnRef = usePressEffect<HTMLButtonElement>()
+  const nextBtnRef = usePressEffect<HTMLButtonElement>()
+
+  useGSAP(
+    () => {
+      slideRefs.current.forEach((slide, index) => {
+        if (!slide) return
+        gsap.set(slide, { autoAlpha: index === 0 ? 1 : 0, scale: index === 0 ? 1 : 1.06 })
+      })
+
+      if (whatsappRef.current) {
+        gsap.from(whatsappRef.current, {
+          scale: 0,
+          autoAlpha: 0,
+          duration: 0.6,
+          delay: 0.6,
+          ease: 'back.out(2)',
+        })
+      }
+    },
+    { scope: sectionRef },
+  )
+
+  useEffect(() => {
+    slideRefs.current.forEach((slide, index) => {
+      if (!slide) return
+      const isActive = index === current
+      gsap.to(slide, {
+        autoAlpha: isActive ? 1 : 0,
+        scale: isActive ? 1 : 1.06,
+        duration: 1,
+        ease: 'power2.inOut',
+        overwrite: true,
+      })
+    })
+  }, [current])
 
   useEffect(() => {
     const timer = setInterval(() => {
@@ -46,18 +87,20 @@ export default function HeroCarousel() {
   const prev = () => setCurrent((prev) => (prev - 1 + slides.length) % slides.length)
 
   return (
-    <section className="relative w-full overflow-hidden bg-dark-gray">
+    <section ref={sectionRef} className="relative w-full overflow-hidden bg-dark-gray">
       <div className="relative w-full aspect-video md:aspect-auto md:h-[500px] lg:h-[600px]">
         <button
+          ref={prevBtnRef}
           onClick={prev}
-          className="group absolute left-3 md:left-4 top-1/2 -translate-y-1/2 z-30 flex h-10 w-10 md:h-11 md:w-11 items-center justify-center rounded-full bg-black/35 text-white backdrop-blur-sm transition hover:bg-white hover:text-primary"
+          className="group absolute left-3 md:left-4 top-1/2 -translate-y-1/2 z-30 flex h-10 w-10 md:h-11 md:w-11 items-center justify-center rounded-full bg-black/35 text-white backdrop-blur-sm transition-colors hover:bg-white hover:text-primary will-change-transform"
           aria-label="Previous slide"
         >
           <IconChevronLeft size={22} stroke={2} className="transition-colors" />
         </button>
         <button
+          ref={nextBtnRef}
           onClick={next}
-          className="group absolute right-3 md:right-4 top-1/2 -translate-y-1/2 z-30 flex h-10 w-10 md:h-11 md:w-11 items-center justify-center rounded-full bg-black/35 text-white backdrop-blur-sm transition hover:bg-white hover:text-primary"
+          className="group absolute right-3 md:right-4 top-1/2 -translate-y-1/2 z-30 flex h-10 w-10 md:h-11 md:w-11 items-center justify-center rounded-full bg-black/35 text-white backdrop-blur-sm transition-colors hover:bg-white hover:text-primary will-change-transform"
           aria-label="Next slide"
         >
           <IconChevronRight size={22} stroke={2} className="transition-colors" />
@@ -66,9 +109,10 @@ export default function HeroCarousel() {
         {slides.map((slide, index) => (
           <div
             key={slide.id}
-            className={`absolute inset-0 transition-opacity duration-1000 ${
-              index === current ? 'opacity-100' : 'opacity-0'
-            }`}
+            ref={(el) => {
+              slideRefs.current[index] = el
+            }}
+            className="absolute inset-0 invisible"
           >
             <picture>
               <source srcSet={slide.mobileImage} media="(max-width: 767px)" />
@@ -80,15 +124,16 @@ export default function HeroCarousel() {
               />
             </picture>
 
-            {slide.showWhatsapp && (
+            {slide.showWhatsapp && index === 0 && (
               <a
+                ref={whatsappRef}
                 href={WHATSAPP_URL}
-                className="absolute bottom-6 left-1/2 -translate-x-1/2 md:bottom-8 md:left-auto md:right-8 md:translate-x-0 z-20"
+                className="absolute bottom-6 left-1/2 -translate-x-1/2 md:bottom-8 md:left-auto md:right-8 md:translate-x-0 z-20 will-change-transform"
                 target="_blank"
                 rel="noopener noreferrer"
                 aria-label="Hubungi via WhatsApp"
               >
-                <div className="w-16 h-16 md:w-20 md:h-20 bg-[#25D366] rounded-full flex items-center justify-center hover:shadow-lg transition">
+                <div className="w-16 h-16 md:w-20 md:h-20 bg-[#25D366] rounded-full flex items-center justify-center shadow-lg">
                   <svg className="w-8 h-8 md:w-10 md:h-10 text-white" viewBox="0 0 24 24" fill="currentColor">
                     <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.67-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.076 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421-7.403h-.004a9.87 9.87 0 00-4.946 1.23l-.356.214-3.71-.973.992 3.63-.235.374a9.86 9.86 0 001.51 5.394c.915 1.355 2.112 2.463 3.488 3.24 1.375.776 2.886 1.184 4.39 1.175 1.504-.009 3.002-.341 4.38-1.015l.374-.214 3.728.973-.993-3.629.236-.375a9.87 9.87 0 00-1.51-5.394c-.915-1.355-2.112-2.463-3.488-3.24-1.375-.776-2.886-1.184-4.39-1.175z" />
                   </svg>
@@ -103,8 +148,8 @@ export default function HeroCarousel() {
             <button
               key={index}
               onClick={() => setCurrent(index)}
-              className={`w-2 h-2 md:w-3 md:h-3 rounded-full transition ${
-                index === current ? 'bg-white' : 'bg-white/50'
+              className={`w-2 h-2 md:w-3 md:h-3 rounded-full transition-colors duration-300 ${
+                index === current ? 'bg-white scale-110' : 'bg-white/50'
               }`}
               aria-label={`Go to slide ${index + 1}`}
             />

@@ -3,6 +3,7 @@ import type { Metadata, Viewport } from 'next'
 import Header from '@/components/header'
 import Footer from '@/components/footer'
 import ChatWidget from '@/components/chat-widget'
+import SmoothScroll from '@/components/smooth-scroll'
 import './globals.css'
 
 export const metadata: Metadata = {
@@ -31,11 +32,15 @@ export default function RootLayout({
   children: React.ReactNode
 }>) {
   return (
-    <html lang="id" className="scroll-smooth">
+    <html lang="id">
       <body className="antialiased bg-background text-foreground font-sans">
         <Header />
-        {children}
-        <Footer />
+        <SmoothScroll>
+          <div className="site-content-offset">
+            {children}
+            <Footer />
+          </div>
+        </SmoothScroll>
         <ChatWidget />
         {process.env.NODE_ENV === 'production' && <Analytics />}
       </body>

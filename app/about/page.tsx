@@ -8,7 +8,9 @@ import {
   SITE_TAGLINE,
   whatsappUrl,
 } from '@/lib/site'
-import { IconAward, IconBuildingStore, IconMapPin, IconPackage, IconUsers } from '@tabler/icons-react'
+import { IconAward, IconBuildingStore, IconMapPin, IconPackage } from '@tabler/icons-react'
+import ProductCategoryCard from '@/components/about/product-category-card'
+import IndustryCard from '@/components/about/industry-card'
 
 export const metadata: Metadata = {
   title: 'Tentang Kami | Simpang Utama Kemasan',
@@ -87,14 +89,9 @@ export default function AboutPage() {
             </p>
           </div>
 
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
-            {SITE_PRODUCT_CATEGORIES.map((product) => (
-              <div
-                key={product}
-                className="bg-white rounded-xl border border-border px-5 py-4 text-sm text-gray-700 shadow-sm"
-              >
-                {product}
-              </div>
+          <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
+            {SITE_PRODUCT_CATEGORIES.map((product, index) => (
+              <ProductCategoryCard key={product} name={product} index={index} />
             ))}
           </div>
         </div>
@@ -138,14 +135,9 @@ export default function AboutPage() {
             Produk kami telah banyak digunakan dan didistribusikan oleh pelaku bisnis di berbagai
             bidang.
           </p>
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 max-w-4xl mx-auto">
+          <div className="mx-auto grid max-w-5xl grid-cols-2 gap-4 sm:grid-cols-3 lg:grid-cols-5">
             {SITE_INDUSTRIES.map((industry) => (
-              <div
-                key={industry}
-                className="bg-white rounded-xl border border-border px-5 py-4 text-center text-sm font-medium text-foreground"
-              >
-                {industry}
-              </div>
+              <IndustryCard key={industry} name={industry} />
             ))}
           </div>
         </div>
@@ -153,7 +145,6 @@ export default function AboutPage() {
 
       <section className="py-16 md:py-20 bg-gradient-to-r from-primary to-accent text-white">
         <div className="max-w-7xl mx-auto px-4 text-center">
-          <IconUsers size={48} stroke={1.5} className="mx-auto mb-4 opacity-90" />
           <h2 className="text-3xl md:text-4xl font-bold mb-4">
             Butuh Kemasan untuk Bisnis Anda?
           </h2>

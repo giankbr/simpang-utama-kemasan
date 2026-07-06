@@ -6,6 +6,7 @@ import { IconMenu, IconX, IconBrandWhatsapp, IconMail, IconChevronDown } from '@
 import Logo from '@/components/logo'
 import { button3d } from '@/lib/button-3d'
 import { SITE_EMAIL, SITE_PHONE_DISPLAY, whatsappUrl } from '@/lib/site'
+import { gsap, ScrollTrigger, useGSAP } from '@/lib/gsap'
 
 const kemasanItems = [
   { name: 'Sachet / 3 Side Seal', href: '/products' },
@@ -29,6 +30,8 @@ const menuItems = [
 
 export default function Header() {
   const headerRef = useRef<HTMLElement>(null)
+  const mobileNavRef = useRef<HTMLElement>(null)
+  const backdropRef = useRef<HTMLButtonElement>(null)
   const [isOpen, setIsOpen] = useState(false)
   const [openDropdown, setOpenDropdown] = useState<string | null>(null)
   const [headerHeight, setHeaderHeight] = useState(0)
@@ -45,7 +48,9 @@ export default function Header() {
   useEffect(() => {
     const updateHeight = () => {
       if (headerRef.current) {
-        setHeaderHeight(headerRef.current.offsetHeight)
+        const height = headerRef.current.offsetHeight
+        setHeaderHeight(height)
+        document.documentElement.style.setProperty('--site-header-offset', `${height}px`)
       }
     }
 
@@ -61,8 +66,62 @@ export default function Header() {
     }
   }, [isOpen])
 
+  useGSAP(
+    () => {
+      if (!headerRef.current) return
+
+      ScrollTrigger.create({
+        start: 0,
+        end: 'max',
+        onUpdate: (self) => {
+          gsap.to(headerRef.current, {
+            boxShadow:
+              self.scroll() > 24
+                ? '0 4px 24px rgba(0,0,0,0.08)'
+                : '0 0 0 rgba(0,0,0,0)',
+            duration: 0.25,
+            overwrite: true,
+          })
+        },
+      })
+    },
+    { scope: headerRef },
+  )
+
+  useEffect(() => {
+    const nav = mobileNavRef.current
+    const backdrop = backdropRef.current
+    if (!isOpen || !nav) return
+
+    gsap.fromTo(backdrop, { autoAlpha: 0 }, { autoAlpha: 1, duration: 0.25, ease: 'power2.out' })
+    gsap.fromTo(
+      nav,
+      { x: '100%' },
+      { x: '0%', duration: 0.4, ease: 'power3.out' },
+    )
+  }, [isOpen])
+
+  const closeMenuAnimated = () => {
+    const nav = mobileNavRef.current
+    const backdrop = backdropRef.current
+    if (!nav) {
+      closeMenu()
+      return
+    }
+
+    gsap.to(nav, {
+      x: '100%',
+      duration: 0.3,
+      ease: 'power3.in',
+      onComplete: closeMenu,
+    })
+    if (backdrop) {
+      gsap.to(backdrop, { autoAlpha: 0, duration: 0.25 })
+    }
+  }
+
   return (
-    <header ref={headerRef} className="sticky top-0 z-50 bg-white border-b border-border">
+    <header ref={headerRef} className="fixed top-0 left-0 right-0 z-50 bg-white border-b border-border">
       <div className="bg-primary text-white py-2">
         <div className="max-w-7xl mx-auto px-3 sm:px-4 flex items-center justify-between gap-2 min-w-0">
           <span className="font-medium text-[11px] sm:text-sm truncate min-w-0">
@@ -104,16 +163,18 @@ export default function Header() {
                 <IconChevronDown size={16} stroke={1.5} />
               </button>
               {openDropdown === 'kemasan' && (
-                <div className="absolute top-full left-0 w-56 bg-white border border-border rounded-lg shadow-xl py-2 z-50">
-                  {kemasanItems.map((item) => (
-                    <Link
-                      key={item.name}
-                      href={item.href}
-                      className="block px-4 py-2.5 text-sm text-foreground hover:bg-light-gray hover:text-primary transition"
-                    >
-                      {item.name}
-                    </Link>
-                  ))}
+                <div className="absolute top-full left-0 w-56 pt-2 z-50">
+                  <div className="bg-white border border-border rounded-lg shadow-xl py-1.5">
+                    {kemasanItems.map((item) => (
+                      <Link
+                        key={item.name}
+                        href={item.href}
+                        className="block mx-1.5 px-3 py-2.5 text-sm text-foreground rounded-md hover:bg-light-gray hover:text-primary transition"
+                      >
+                        {item.name}
+                      </Link>
+                    ))}
+                  </div>
                 </div>
               )}
             </div>
@@ -131,16 +192,18 @@ export default function Header() {
                     <IconChevronDown size={16} stroke={1.5} />
                   </button>
                   {openDropdown === item.name && (
-                    <div className="absolute top-full left-0 w-48 bg-white border border-border rounded-lg shadow-xl py-2 z-50">
-                      {item.children.map((child) => (
-                        <Link
-                          key={child.name}
-                          href={child.href}
-                          className="block px-4 py-2.5 text-sm text-foreground hover:bg-light-gray hover:text-primary transition"
-                        >
-                          {child.name}
-                        </Link>
-                      ))}
+                    <div className="absolute top-full left-0 w-48 pt-2 z-50">
+                      <div className="bg-white border border-border rounded-lg shadow-xl py-1.5">
+                        {item.children.map((child) => (
+                          <Link
+                            key={child.name}
+                            href={child.href}
+                            className="block mx-1.5 px-3 py-2.5 text-sm text-foreground rounded-md hover:bg-light-gray hover:text-primary transition"
+                          >
+                            {child.name}
+                          </Link>
+                        ))}
+                      </div>
                     </div>
                   )}
                 </div>
@@ -166,7 +229,7 @@ export default function Header() {
               </a>
             </div>
             <button
-              onClick={() => setIsOpen(!isOpen)}
+              onClick={() => (isOpen ? closeMenuAnimated() : setIsOpen(true))}
               className="lg:hidden p-2 -mr-1 hover:bg-secondary rounded-lg"
               aria-label="Toggle menu"
               aria-expanded={isOpen}
@@ -180,13 +243,15 @@ export default function Header() {
       {isOpen && (
         <>
           <button
+            ref={backdropRef}
             type="button"
-            className="fixed inset-0 z-40 bg-black/30 lg:hidden"
+            className="fixed inset-0 z-40 bg-black/30 lg:hidden invisible"
             style={{ top: headerHeight }}
-            onClick={closeMenu}
+            onClick={closeMenuAnimated}
             aria-label="Tutup menu"
           />
           <nav
+            ref={mobileNavRef}
             className="fixed inset-x-0 bottom-0 z-50 lg:hidden bg-white flex flex-col shadow-2xl"
             style={{ top: headerHeight }}
             aria-label="Mobile navigation"
@@ -217,7 +282,7 @@ export default function Header() {
                           key={item.name}
                           href={item.href}
                           className="block rounded-lg px-3 py-2.5 text-sm text-gray-700 hover:bg-white hover:text-primary transition"
-                          onClick={closeMenu}
+                          onClick={closeMenuAnimated}
                         >
                           {item.name}
                         </Link>
@@ -248,7 +313,7 @@ export default function Header() {
                               key={child.name}
                               href={child.href}
                               className="block rounded-lg px-3 py-2.5 text-sm text-gray-700 hover:bg-white hover:text-primary transition"
-                              onClick={closeMenu}
+                              onClick={closeMenuAnimated}
                             >
                               {child.name}
                             </Link>
@@ -261,7 +326,7 @@ export default function Header() {
                       key={item.name}
                       href={item.href}
                       className="flex items-center w-full px-4 py-3.5 rounded-xl border border-border font-semibold text-sm text-foreground hover:border-primary/30 hover:bg-light-gray transition"
-                      onClick={closeMenu}
+                      onClick={closeMenuAnimated}
                     >
                       {item.name}
                     </Link>
@@ -276,7 +341,7 @@ export default function Header() {
                 target="_blank"
                 rel="noopener noreferrer"
                 className={button3d('primary', 'w-full py-3 text-sm justify-center')}
-                onClick={closeMenu}
+                onClick={closeMenuAnimated}
               >
                 <IconBrandWhatsapp size={18} stroke={1.5} />
                 Hubungi Kami

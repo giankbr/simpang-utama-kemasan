@@ -1,15 +1,20 @@
+'use client'
+
 import { IconArrowRight } from '@tabler/icons-react'
 import { button3d } from '@/lib/button-3d'
 import { whatsappUrl } from '@/lib/site'
+import Reveal from '@/components/animate/reveal'
+import { usePressEffect } from '@/hooks/use-press-effect'
 
 const WHATSAPP_URL = whatsappUrl(
   'Halo, saya ingin menanyakan penawaran kemasan dari Simpang Utama Kemasan',
 )
 
 export default function CTASection() {
+  const ctaRef = usePressEffect<HTMLAnchorElement>()
+
   return (
     <section className="relative overflow-hidden bg-primary">
-      {/* Network pattern — right side */}
       <div
         className="absolute inset-y-0 right-0 w-full md:w-[55%] pointer-events-none opacity-[0.12]"
         aria-hidden
@@ -47,19 +52,24 @@ export default function CTASection() {
 
       <div className="relative max-w-7xl mx-auto px-4 py-14 md:py-20 lg:py-24">
         <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-8 md:gap-12">
-          <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-white leading-snug max-w-2xl">
-            Cetak Kemasan Fleksibel Custom Full Color, Min. Order 100 pcs, Tanpa Investasi Plat
-          </h2>
+          <Reveal y={24}>
+            <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-white leading-snug max-w-2xl">
+              Cetak Kemasan Fleksibel Custom Full Color, Min. Order 100 pcs, Tanpa Investasi Plat
+            </h2>
+          </Reveal>
 
-          <a
-            href={WHATSAPP_URL}
-            target="_blank"
-            rel="noopener noreferrer"
-            className={button3d('white', 'px-8 py-3.5 text-sm md:text-base shrink-0 self-start md:self-center')}
-          >
-            Konsultasi Gratis
-            <IconArrowRight size={18} stroke={2} />
-          </a>
+          <Reveal delay={0.15} y={24}>
+            <a
+              ref={ctaRef}
+              href={WHATSAPP_URL}
+              target="_blank"
+              rel="noopener noreferrer"
+              className={button3d('white', 'px-8 py-3.5 text-sm md:text-base shrink-0 self-start md:self-center will-change-transform')}
+            >
+              Konsultasi Gratis
+              <IconArrowRight size={18} stroke={2} />
+            </a>
+          </Reveal>
         </div>
       </div>
     </section>

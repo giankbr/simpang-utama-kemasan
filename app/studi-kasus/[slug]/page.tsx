@@ -159,7 +159,7 @@ export default async function CaseStudyDetailPage({ params }: PageProps) {
       {related.length > 0 && (
         <section className="py-14 md:py-20 bg-light-gray border-t border-border">
           <div className="max-w-7xl mx-auto px-4">
-            <h2 className="text-2xl md:text-3xl font-bold text-foreground mb-8">Studi Kasus Lainnya</h2>
+            <h2 className="text-2xl md:text-3xl font-bold text-foreground mb-8">Baca Juga</h2>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8">
               {related.map((item) => (
                 <Link

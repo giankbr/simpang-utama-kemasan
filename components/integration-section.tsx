@@ -1,6 +1,11 @@
+'use client'
+
 import Link from 'next/link'
 import { IconArrowRight, IconLayersLinked, IconPalette, IconTruck } from '@tabler/icons-react'
 import { button3d } from '@/lib/button-3d'
+import Reveal from '@/components/animate/reveal'
+import StaggerReveal from '@/components/animate/stagger-reveal'
+import { usePressEffect } from '@/hooks/use-press-effect'
 
 const highlights = [
   {
@@ -21,11 +26,13 @@ const highlights = [
 ]
 
 export default function IntegrationSection() {
+  const ctaRef = usePressEffect<HTMLAnchorElement>()
+
   return (
     <section className="py-16 md:py-24 bg-light-gray">
       <div className="max-w-7xl mx-auto px-4">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 md:gap-16 items-center">
-          <div>
+          <Reveal x={-24}>
             <h2 className="text-3xl md:text-5xl font-bold text-foreground mb-4">
               Fleksibilitas Pesanan Terintegrasi
             </h2>
@@ -34,15 +41,16 @@ export default function IntegrationSection() {
               kemasan custom dari awal hingga akhir, tanpa ribet, tanpa investasi plat.
             </p>
             <Link
+              ref={ctaRef}
               href="/custom-printing"
-              className={button3d('primary', 'px-6 py-3 text-sm md:text-base')}
+              className={button3d('primary', 'px-6 py-3 text-sm md:text-base will-change-transform')}
             >
               Lihat Detail
               <IconArrowRight size={18} stroke={1.5} />
             </Link>
-          </div>
+          </Reveal>
 
-          <div className="space-y-4">
+          <StaggerReveal className="space-y-4" stagger={0.12}>
             {highlights.map((item) => (
               <div
                 key={item.title}
@@ -57,7 +65,7 @@ export default function IntegrationSection() {
                 </div>
               </div>
             ))}
-          </div>
+          </StaggerReveal>
         </div>
       </div>
     </section>
