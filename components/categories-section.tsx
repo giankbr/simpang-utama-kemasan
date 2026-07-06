@@ -1,45 +1,5 @@
-const categories = [
-  {
-    id: 1,
-    name: 'Kemasan Kopi, Teh & Bubuk Minuman',
-    image: '/categories/kopi.svg',
-  },
-  {
-    id: 2,
-    name: 'Kemasan Kosmetik & Obat',
-    image: '/categories/kosmetik.svg',
-  },
-  {
-    id: 3,
-    name: 'Kemasan Bumbu Dapur',
-    image: '/categories/bumbu.svg',
-  },
-  {
-    id: 4,
-    name: 'Kemasan Frozen Food',
-    image: '/categories/frozen.svg',
-  },
-  {
-    id: 5,
-    name: 'Kemasan Makanan Ringan',
-    image: '/categories/snack.svg',
-  },
-  {
-    id: 6,
-    name: 'Kemasan Roti & Kue',
-    image: '/categories/roti.svg',
-  },
-  {
-    id: 7,
-    name: 'Kemasan Bibit Tanaman',
-    image: '/categories/bibit.svg',
-  },
-  {
-    id: 8,
-    name: 'Kemasan Makanan Hewan',
-    image: '/categories/hewan.svg',
-  },
-]
+import Link from 'next/link'
+import { packagingCategories } from '@/lib/packaging-categories'
 
 export default function CategoriesSection() {
   return (
@@ -55,10 +15,10 @@ export default function CategoriesSection() {
         </div>
 
         <div className="grid grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-4 md:gap-6">
-          {categories.map((category) => (
-            <a
-              key={category.id}
-              href="/products"
+          {packagingCategories.map((category) => (
+            <Link
+              key={category.slug}
+              href={`/kategori/${category.slug}`}
               className="group flex flex-col rounded-xl border border-border bg-white overflow-hidden hover:shadow-lg hover:border-primary/20 transition duration-300"
             >
               <div className="aspect-[4/3] overflow-hidden bg-light-gray">
@@ -73,7 +33,7 @@ export default function CategoriesSection() {
                   {category.name}
                 </h3>
               </div>
-            </a>
+            </Link>
           ))}
         </div>
       </div>

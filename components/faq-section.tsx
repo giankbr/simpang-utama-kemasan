@@ -2,6 +2,8 @@
 
 import { useState } from 'react'
 import { button3d } from '@/lib/button-3d'
+import { cn } from '@/lib/utils'
+import { whatsappUrl } from '@/lib/site'
 import {
   IconChevronDown,
   IconHelp,
@@ -24,6 +26,7 @@ type FaqSectionProps = {
   description?: string
   faqs?: FaqItem[]
   whatsappMessage?: string
+  className?: string
 }
 
 const customPrintingFaqs: FaqItem[] = [
@@ -85,11 +88,12 @@ export default function FaqSection({
   description = 'Punya pertanyaan seputar layanan custom printing? Berikut jawaban untuk hal yang paling sering ditanyakan pelanggan kami.',
   faqs = customPrintingFaqs,
   whatsappMessage = 'Halo%2C%20saya%20punya%20pertanyaan%20tentang%20custom%20printing',
+  className,
 }: FaqSectionProps) {
   const [openIndex, setOpenIndex] = useState(0)
 
   return (
-    <section className="py-16 md:py-24 bg-light-gray">
+    <section className={cn('py-16 md:py-24 bg-light-gray', className)}>
       <div className="max-w-7xl mx-auto px-4">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-14 items-start">
           <div className="lg:col-span-4 xl:col-span-5">
@@ -105,7 +109,7 @@ export default function FaqSection({
                   Tim kami siap bantu via WhatsApp dalam hitungan menit.
                 </p>
                 <a
-                  href={`https://wa.me/628123456789?text=${whatsappMessage}`}
+                  href={whatsappUrl(decodeURIComponent(whatsappMessage))}
                   target="_blank"
                   rel="noopener noreferrer"
                   className={button3d('primary', 'px-6 py-2.5 text-sm w-full sm:w-auto')}

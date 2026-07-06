@@ -5,6 +5,7 @@ import Link from 'next/link'
 import { IconMenu, IconX, IconBrandWhatsapp, IconMail, IconChevronDown } from '@tabler/icons-react'
 import Logo from '@/components/logo'
 import { button3d } from '@/lib/button-3d'
+import { SITE_EMAIL, SITE_PHONE_DISPLAY, whatsappUrl } from '@/lib/site'
 
 const kemasanItems = [
   { name: 'Sachet / 3 Side Seal', href: '/products' },
@@ -69,20 +70,20 @@ export default function Header() {
           </span>
           <div className="flex items-center gap-3 sm:gap-6 flex-shrink-0">
             <a
-              href="https://wa.me/628123456789"
+              href={whatsappUrl()}
               className="flex items-center gap-1.5 text-[11px] sm:text-sm hover:opacity-90 transition whitespace-nowrap"
               target="_blank"
               rel="noopener noreferrer"
             >
               <IconBrandWhatsapp size={16} stroke={1.5} className="flex-shrink-0" />
-              <span>0812-3456-789</span>
+              <span>{SITE_PHONE_DISPLAY}</span>
             </a>
             <a
-              href="mailto:info@simpangutama.com"
+              href={`mailto:${SITE_EMAIL}`}
               className="items-center gap-1 md:gap-2 text-xs md:text-sm hover:opacity-90 transition hidden md:flex"
             >
               <IconMail size={16} stroke={1.5} />
-              <span>info@simpangutama.com</span>
+              <span>{SITE_EMAIL}</span>
             </a>
           </div>
         </div>
@@ -158,7 +159,7 @@ export default function Header() {
           <div className="flex items-center gap-1 flex-shrink-0">
             <div className="hidden lg:block">
               <a
-                href="https://wa.me/628123456789"
+                href={whatsappUrl()}
                 className={button3d('primary', 'px-6 py-2.5 text-sm')}
               >
                 Hubungi Kami

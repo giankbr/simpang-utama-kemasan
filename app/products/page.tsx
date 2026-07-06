@@ -1,4 +1,5 @@
 import { button3d } from '@/lib/button-3d'
+import { whatsappUrl } from '@/lib/site'
 import { IconPackage, IconBox, IconCup, IconCylinder } from '@tabler/icons-react'
 
 const kemasanTypes = [
@@ -71,7 +72,7 @@ export default function ProductsPage() {
                       ))}
                     </div>
                     <a
-                      href="https://wa.me/628123456789"
+                      href={whatsappUrl()}
                       className="inline-block text-primary font-semibold hover:text-accent transition text-sm"
                     >
                       Konsultasi Sekarang →
@@ -90,7 +91,7 @@ export default function ProductsPage() {
               Tim kami siap membantu kamu memilih jenis kemasan yang tepat untuk produkmu.
             </p>
             <a
-              href="https://wa.me/628123456789"
+              href={whatsappUrl()}
               className={button3d('white', 'px-8 py-3')}
             >
               Hubungi Tim Kami

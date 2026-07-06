@@ -1,5 +1,12 @@
 import Link from 'next/link'
 import {
+  SITE_ADDRESS_LINES,
+  SITE_EMAIL,
+  SITE_PHONE_DISPLAY,
+  SITE_PHONE_E164,
+  whatsappUrl,
+} from '@/lib/site'
+import {
   IconBrandWhatsapp,
   IconBrandInstagram,
   IconBrandFacebook,
@@ -123,38 +130,42 @@ export default function Footer() {
                 <p className="flex items-start gap-2">
                   <IconMapPin size={16} stroke={1.5} className="flex-shrink-0 mt-0.5" />
                   <span>
-                    No. 17-20, Jl. Sandubaya Mandalika Blok AA, Bertais, Sandubaya, Mataram City,
-                    West Nusa Tenggara 83236
+                    {SITE_ADDRESS_LINES.map((line, index) => (
+                      <span key={line}>
+                        {line}
+                        {index < SITE_ADDRESS_LINES.length - 1 ? ', ' : ''}
+                      </span>
+                    ))}
                   </span>
                 </p>
               </li>
               <li>
                 <a
-                  href="https://wa.me/628123456789"
+                  href={whatsappUrl()}
                   className="hover:text-white transition flex items-center gap-2"
                   target="_blank"
                   rel="noopener noreferrer"
                 >
                   <IconBrandWhatsapp size={16} stroke={1.5} className="text-[#25D366] flex-shrink-0" />
-                  0812-3456-789
+                  {SITE_PHONE_DISPLAY}
                 </a>
               </li>
               <li>
                 <a
-                  href="tel:+628123456789"
+                  href={`tel:${SITE_PHONE_E164}`}
                   className="hover:text-white transition flex items-center gap-2"
                 >
                   <IconPhone size={16} stroke={1.5} />
-                  0812-3456-789
+                  {SITE_PHONE_DISPLAY}
                 </a>
               </li>
               <li>
                 <a
-                  href="mailto:info@simpangutama.com"
+                  href={`mailto:${SITE_EMAIL}`}
                   className="hover:text-white transition flex items-center gap-2"
                 >
                   <IconMail size={16} stroke={1.5} />
-                  info@simpangutama.com
+                  {SITE_EMAIL}
                 </a>
               </li>
             </ul>
@@ -182,12 +193,12 @@ export default function Footer() {
         <div className="max-w-7xl mx-auto px-4 py-6 flex flex-col sm:flex-row justify-between items-center gap-3 text-xs text-white/40">
           <p>Copyright &copy; {currentYear} Simpang Utama Kemasan. All rights reserved.</p>
           <div className="flex gap-5">
-            <a href="#" className="hover:text-white/70 transition">
+            <Link href="/syarat-ketentuan" className="hover:text-white/70 transition">
               Syarat & Ketentuan
-            </a>
-            <a href="#" className="hover:text-white/70 transition">
+            </Link>
+            <Link href="/kebijakan-privasi" className="hover:text-white/70 transition">
               Kebijakan Privasi
-            </a>
+            </Link>
           </div>
         </div>
       </div>

@@ -2,6 +2,7 @@ import Link from 'next/link'
 import { notFound } from 'next/navigation'
 import { IconArrowLeft, IconArrowRight, IconCheck } from '@tabler/icons-react'
 import { button3d } from '@/lib/button-3d'
+import { whatsappUrl } from '@/lib/site'
 import { caseStudies, getCaseStudy } from '@/lib/case-studies'
 import type { Metadata } from 'next'
 
@@ -144,7 +145,7 @@ export default async function CaseStudyDetailPage({ params }: PageProps) {
               </p>
             </div>
             <a
-              href="https://wa.me/628123456789?text=Halo%2C%20saya%20tertarik%20konsultasi%20studi%20kasus%20kemasan"
+              href={whatsappUrl('Halo, saya tertarik konsultasi studi kasus kemasan')}
               target="_blank"
               rel="noopener noreferrer"
               className={button3d('white', 'px-6 py-3 text-sm text-center shrink-0')}

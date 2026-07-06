@@ -3,9 +3,11 @@
 import { useState } from 'react'
 import { IconBrandWhatsapp, IconX } from '@tabler/icons-react'
 import { button3d } from '@/lib/button-3d'
+import { whatsappUrl } from '@/lib/site'
 
-const WHATSAPP_URL =
-  'https://wa.me/628123456789?text=Halo%2C%20saya%20ingin%20menanyakan%20tentang%20kemasan%20dari%20Simpang%20Utama%20Kemasan.'
+const WHATSAPP_URL = whatsappUrl(
+  'Halo, saya ingin menanyakan tentang kemasan dari Simpang Utama Kemasan.',
+)
 
 export default function ChatWidget() {
   const [isOpen, setIsOpen] = useState(false)

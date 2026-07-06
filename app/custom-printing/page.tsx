@@ -1,4 +1,5 @@
 import FaqSection from '@/components/faq-section'
+import { whatsappUrl } from '@/lib/site'
 import { button3d } from '@/lib/button-3d'
 import { IconPalette } from '@tabler/icons-react'
 
@@ -129,7 +130,7 @@ export default function CustomPrintingPage() {
               Hubungi tim kami sekarang untuk konsultasi gratis dan penawaran terbaik.
             </p>
             <a
-              href="https://wa.me/628123456789"
+              href={whatsappUrl()}
               className={button3d('white', 'px-8 py-3')}
             >
               Konsultasi Sekarang
