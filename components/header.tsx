@@ -62,24 +62,24 @@ export default function Header() {
 
   return (
     <header ref={headerRef} className="sticky top-0 z-50 bg-white border-b border-border">
-      <div className="bg-primary text-white py-1.5 sm:py-2">
-        <div className="max-w-7xl mx-auto px-3 sm:px-4 flex items-center justify-end sm:justify-between gap-3">
-          <span className="font-medium text-xs md:text-sm hidden sm:block">
+      <div className="bg-primary text-white py-2">
+        <div className="max-w-7xl mx-auto px-3 sm:px-4 flex items-center justify-between gap-2 min-w-0">
+          <span className="font-medium text-[11px] sm:text-sm truncate min-w-0">
             Cetak Kemasan Fleksibel Custom Full Color
           </span>
-          <div className="flex items-center gap-3 sm:gap-6">
+          <div className="flex items-center gap-3 sm:gap-6 flex-shrink-0">
             <a
               href="https://wa.me/628123456789"
-              className="flex items-center gap-1.5 text-xs md:text-sm hover:opacity-90 transition"
+              className="flex items-center gap-1.5 text-[11px] sm:text-sm hover:opacity-90 transition whitespace-nowrap"
               target="_blank"
               rel="noopener noreferrer"
             >
               <IconBrandWhatsapp size={16} stroke={1.5} className="flex-shrink-0" />
-              <span className="hidden sm:inline">+62 812-3456-789</span>
+              <span>0812-3456-789</span>
             </a>
             <a
               href="mailto:info@simpangutama.com"
-              className="flex items-center gap-1 md:gap-2 text-xs md:text-sm hover:opacity-90 transition hidden sm:flex"
+              className="items-center gap-1 md:gap-2 text-xs md:text-sm hover:opacity-90 transition hidden md:flex"
             >
               <IconMail size={16} stroke={1.5} />
               <span>info@simpangutama.com</span>
@@ -88,7 +88,7 @@ export default function Header() {
         </div>
       </div>
 
-      <div className="max-w-7xl mx-auto px-3 sm:px-4 py-3 lg:py-4">
+      <div className="max-w-7xl mx-auto px-3 sm:px-4 py-3.5 lg:py-4">
         <div className="flex items-center justify-between gap-2 min-w-0">
           <Logo />
 

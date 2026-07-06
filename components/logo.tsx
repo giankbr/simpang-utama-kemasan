@@ -14,7 +14,7 @@ export default function Logo({ className = '', href = '/' }: LogoProps) {
       alt="Simpang Utama Kemasan"
       width={180}
       height={52}
-      className={cn('w-auto object-contain h-8 sm:h-10 lg:h-[52px] max-w-[130px] sm:max-w-[160px] lg:max-w-none', className)}
+      className={cn('w-auto object-contain h-11 sm:h-12 lg:h-[52px] max-w-[200px] sm:max-w-[220px] lg:max-w-none', className)}
       priority
     />
   )
