@@ -1,0 +1,241 @@
+@import url('https://fonts.googleapis.com/css2?family=Figtree:wght@300;400;500;600;700;800;900&display=swap');
+
+@import 'tailwindcss';
+@import 'tw-animate-css';
+@import 'shadcn/tailwind.css';
+
+@custom-variant dark (&:is(.dark *));
+
+@theme inline {
+  --font-sans: 'Figtree', sans-serif;
+  --color-sidebar-ring: var(--sidebar-ring);
+  --color-sidebar-border: var(--sidebar-border);
+  --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
+  --color-sidebar-accent: var(--sidebar-accent);
+  --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
+  --color-sidebar-primary: var(--sidebar-primary);
+  --color-sidebar-foreground: var(--sidebar-foreground);
+  --color-sidebar: var(--sidebar);
+  --color-chart-5: var(--chart-5);
+  --color-chart-4: var(--chart-4);
+  --color-chart-3: var(--chart-3);
+  --color-chart-2: var(--chart-2);
+  --color-chart-1: var(--chart-1);
+  --color-ring: var(--ring);
+  --color-input: var(--input);
+  --color-border: var(--border);
+  --color-destructive: var(--destructive);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-accent: var(--accent);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-muted: var(--muted);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-secondary: var(--secondary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-primary: var(--primary);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-popover: var(--popover);
+  --color-card-foreground: var(--card-foreground);
+  --color-card: var(--card);
+  --color-foreground: var(--foreground);
+  --color-background: var(--background);
+  --color-pink: var(--pink);
+  --color-dark-gray: var(--dark-gray);
+  --color-light-gray: var(--light-gray);
+  --radius-sm: calc(var(--radius) * 0.6);
+  --radius-md: calc(var(--radius) * 0.8);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) * 1.4);
+  --radius-2xl: calc(var(--radius) * 1.8);
+  --radius-3xl: calc(var(--radius) * 2.2);
+  --radius-4xl: calc(var(--radius) * 2.6);
+}
+
+:root {
+  color-scheme: light;
+  --background: #ffffff;
+  --foreground: #1a1a1a;
+  --card: #ffffff;
+  --card-foreground: #1a1a1a;
+  --popover: #ffffff;
+  --popover-foreground: #1a1a1a;
+  --primary: #D32F2F;
+  --primary-foreground: #ffffff;
+  --secondary: #f5f5f5;
+  --secondary-foreground: #1a1a1a;
+  --muted: #efefef;
+  --muted-foreground: #666666;
+  --accent: #FF6F00;
+  --accent-foreground: #ffffff;
+  --destructive: #ef4444;
+  --border: #e5e5e5;
+  --input: #f5f5f5;
+  --ring: #D32F2F;
+  --chart-1: #D32F2F;
+  --chart-2: #FF6F00;
+  --chart-3: #FFA726;
+  --chart-4: #FFB74D;
+  --chart-5: #FFE0B2;
+  --radius: 0.5rem;
+  --dark-gray: #42424f;
+  --light-gray: #f5f5f5;
+  --sidebar: #ffffff;
+  --sidebar-foreground: #1a1a1a;
+  --sidebar-primary: #D32F2F;
+  --sidebar-primary-foreground: #ffffff;
+  --sidebar-accent: #f5f5f5;
+  --sidebar-accent-foreground: #1a1a1a;
+  --sidebar-border: #e5e5e5;
+  --sidebar-ring: #D32F2F;
+}
+
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
+  }
+  body {
+    @apply bg-background text-foreground;
+  }
+}
+
+/* Force correct colors */
+.bg-primary {
+  background-color: #D32F2F !important;
+}
+
+.text-primary {
+  color: #D32F2F !important;
+}
+
+.bg-accent {
+  background-color: #FF6F00 !important;
+}
+
+.text-accent {
+  color: #FF6F00 !important;
+}
+
+.hover\:bg-primary:hover {
+  background-color: #D32F2F !important;
+}
+
+.hover\:text-primary:hover {
+  color: #D32F2F !important;
+}
+
+.from-primary {
+  --tw-gradient-from: #D32F2F !important;
+}
+
+.to-accent {
+  --tw-gradient-to: #FF6F00 !important;
+}
+
+@keyframes marquee {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+.animate-marquee {
+  animation: marquee 35s linear infinite;
+}
+
+/* 3D pill buttons */
+.btn-3d {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  font-weight: 700;
+  border-radius: 9999px;
+  transition: transform 0.15s ease, box-shadow 0.15s ease;
+  border: none;
+  cursor: pointer;
+  text-decoration: none;
+}
+
+.btn-3d-primary {
+  background: linear-gradient(180deg, #e53935 0%, #d32f2f 55%, #c62828 100%) !important;
+  color: #fff !important;
+  box-shadow: 0 4px 0 #9a1b1b, 0 6px 16px rgba(211, 47, 47, 0.28);
+}
+
+.btn-3d-primary:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 0 #9a1b1b, 0 10px 22px rgba(211, 47, 47, 0.32);
+}
+
+.btn-3d-primary:active {
+  transform: translateY(3px);
+  box-shadow: 0 1px 0 #9a1b1b, 0 3px 8px rgba(211, 47, 47, 0.2);
+}
+
+.btn-3d-white {
+  background: linear-gradient(180deg, #ffffff 0%, #f0f0f0 100%) !important;
+  color: #d32f2f !important;
+  box-shadow: 0 4px 0 #d0d0d0, 0 6px 16px rgba(0, 0, 0, 0.12);
+}
+
+.btn-3d-white:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 0 #d0d0d0, 0 10px 22px rgba(0, 0, 0, 0.15);
+}
+
+.btn-3d-white:active {
+  transform: translateY(3px);
+  box-shadow: 0 1px 0 #d0d0d0, 0 3px 8px rgba(0, 0, 0, 0.1);
+}
+
+.btn-3d-outline {
+  background: linear-gradient(180deg, #ffffff 0%, #fafafa 100%) !important;
+  color: #d32f2f !important;
+  border: 2px solid #d32f2f !important;
+  box-shadow: 0 4px 0 #d32f2f, 0 4px 12px rgba(211, 47, 47, 0.15);
+}
+
+.btn-3d-outline:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 0 #d32f2f, 0 8px 18px rgba(211, 47, 47, 0.2);
+}
+
+.btn-3d-outline:active {
+  transform: translateY(3px);
+  box-shadow: 0 1px 0 #d32f2f, 0 3px 8px rgba(211, 47, 47, 0.12);
+}
+
+.btn-3d-whatsapp {
+  background: linear-gradient(180deg, #2edb5e 0%, #25d366 55%, #1da851 100%) !important;
+  color: #fff !important;
+  box-shadow: 0 4px 0 #128c7e, 0 6px 16px rgba(37, 211, 102, 0.3);
+}
+
+.btn-3d-whatsapp:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 0 #128c7e, 0 10px 22px rgba(37, 211, 102, 0.35);
+}
+
+.btn-3d-whatsapp:active {
+  transform: translateY(3px);
+  box-shadow: 0 1px 0 #128c7e, 0 3px 8px rgba(37, 211, 102, 0.22);
+}
+
+.btn-3d-glass {
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.28) 0%, rgba(255, 255, 255, 0.12) 100%) !important;
+  color: #fff !important;
+  border: 2px solid rgba(255, 255, 255, 0.45) !important;
+  box-shadow: 0 4px 0 rgba(255, 255, 255, 0.2), 0 6px 16px rgba(0, 0, 0, 0.15);
+}
+
+.btn-3d-glass:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 0 rgba(255, 255, 255, 0.25), 0 10px 22px rgba(0, 0, 0, 0.18);
+}
+
+.btn-3d-glass:active {
+  transform: translateY(3px);
+  box-shadow: 0 1px 0 rgba(255, 255, 255, 0.15), 0 3px 8px rgba(0, 0, 0, 0.12);
+}

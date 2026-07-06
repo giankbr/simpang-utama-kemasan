@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="130" height="48" viewBox="0 0 130 48" fill="none">
+  <rect width="130" height="48" rx="8" fill="#E3F2FD"/>
+  <circle cx="18" cy="28" r="6" fill="#1565C0"/>
+  <circle cx="30" cy="22" r="8" fill="#1976D2"/>
+  <text x="46" y="30" font-family="Arial, sans-serif" font-size="13" font-weight="700" fill="#0D47A1">PetCare ID</text>
+</svg>
