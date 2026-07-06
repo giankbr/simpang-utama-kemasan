@@ -1,6 +1,5 @@
 import Link from 'next/link'
-import { IconMessageCircle, IconMail, IconMapPin, IconPhone } from '@tabler/icons-react'
-import Logo from '@/components/logo'
+import { IconBrandWhatsapp, IconMail, IconMapPin, IconPhone } from '@tabler/icons-react'
 
 const footerLinks = {
   tentang: [
@@ -9,8 +8,8 @@ const footerLinks = {
     { label: 'Kontak', href: '/contact' },
   ],
   portofolio: [
-    { label: 'Studi Kasus', href: '/about' },
-    { label: 'Portofolio', href: '/about' },
+    { label: 'Studi Kasus', href: '/studi-kasus' },
+    { label: 'Portofolio', href: '/studi-kasus' },
   ],
   kemasan: [
     { label: 'Sachet / 3 Side Seal', href: '/products' },
@@ -31,15 +30,6 @@ export default function Footer() {
 
   return (
     <footer className="bg-[#1c1c28] text-white">
-      {/* Brand band */}
-      <div className="border-b border-white/10">
-        <div className="max-w-7xl mx-auto px-4 py-8 md:py-10 flex justify-center">
-          <div className="bg-white rounded-lg px-4 py-2">
-            <Logo height={48} href="/" />
-          </div>
-        </div>
-      </div>
-
       {/* Link columns */}
       <div className="max-w-7xl mx-auto px-4 py-12 md:py-16">
         <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-8 md:gap-10">
@@ -110,7 +100,7 @@ export default function Footer() {
               rel="noopener noreferrer"
               className="text-sm text-white/70 hover:text-white transition inline-flex items-center gap-2"
             >
-              <IconMessageCircle size={16} stroke={1.5} />
+              <IconBrandWhatsapp size={16} stroke={1.5} className="text-[#25D366] flex-shrink-0" />
               0853-1111-1010 (WhatsApp)
             </a>
           </div>
@@ -134,7 +124,7 @@ export default function Footer() {
                   target="_blank"
                   rel="noopener noreferrer"
                 >
-                  <IconMessageCircle size={16} stroke={1.5} />
+                  <IconBrandWhatsapp size={16} stroke={1.5} className="text-[#25D366] flex-shrink-0" />
                   0812-3456-789
                 </a>
               </li>

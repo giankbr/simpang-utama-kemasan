@@ -15,7 +15,7 @@ const brands = [
 
 function BrandLogo({ name, logo, width }: (typeof brands)[number]) {
   return (
-    <div className="flex-shrink-0 flex items-center justify-center px-6 md:px-10">
+    <div className="flex-shrink-0 flex items-center justify-center px-2 md:px-3">
       <Image
         src={logo}
         alt={name}

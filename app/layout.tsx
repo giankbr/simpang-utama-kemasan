@@ -1,12 +1,15 @@
 import { Analytics } from '@vercel/analytics/next'
 import type { Metadata, Viewport } from 'next'
+import Header from '@/components/header'
+import Footer from '@/components/footer'
+import ChatWidget from '@/components/chat-widget'
 import './globals.css'
 
 export const metadata: Metadata = {
   title: 'Simpang Utama Kemasan | Cetak Kemasan Fleksibel Custom Full Color',
   description: 'Solusi kemasan fleksibel custom full color untuk berbagai industri. Sachet, standing pouch, roll stock, lid cup — minimum order 100pcs tanpa investasi plat.',
   keywords: 'Simpang Utama Kemasan, kemasan fleksibel, custom printing, sachet, standing pouch, roll stock, food grade',
-  generator: 'v0.app',
+  applicationName: 'Simpang Utama Kemasan',
   icons: {
     icon: [
       {
@@ -39,7 +42,10 @@ export default function RootLayout({
   return (
     <html lang="id" className="scroll-smooth">
       <body className="antialiased bg-background text-foreground font-sans">
+        <Header />
         {children}
+        <Footer />
+        <ChatWidget />
         {process.env.NODE_ENV === 'production' && <Analytics />}
       </body>
     </html>

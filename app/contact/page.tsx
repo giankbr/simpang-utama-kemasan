@@ -1,8 +1,7 @@
 'use client'
 
 import { useState } from 'react'
-import Header from '@/components/header'
-import Footer from '@/components/footer'
+import { button3d } from '@/lib/button-3d'
 import {
   IconPhone,
   IconMail,
@@ -59,9 +58,7 @@ export default function ContactPage() {
   }
 
   return (
-    <>
-      <Header />
-      <main className="bg-white">
+    <main className="bg-white">
         <section className="border-b border-border">
           <div className="max-w-7xl mx-auto px-4 py-14 md:py-20">
             <p className="text-xs font-semibold uppercase tracking-widest text-muted-foreground mb-3">
@@ -223,7 +220,7 @@ export default function ContactPage() {
                       />
                     </div>
 
-                    <button type="submit" className="btn-3d btn-3d-primary px-8 py-3 text-sm md:text-base">
+                    <button type="submit" className={button3d('primary', 'px-8 py-3 text-sm md:text-base')}>
                       <IconMessageCircle size={18} stroke={1.5} />
                       Kirim Melalui WhatsApp
                     </button>
@@ -244,8 +241,6 @@ export default function ContactPage() {
             </div>
           </div>
         </section>
-      </main>
-      <Footer />
-    </>
+    </main>
   )
 }

@@ -152,8 +152,7 @@
   gap: 0.5rem;
   font-weight: 700;
   border-radius: 9999px;
-  transition: transform 0.15s ease, box-shadow 0.15s ease;
-  border: none;
+  transition: filter 0.15s ease, opacity 0.15s ease;
   cursor: pointer;
   text-decoration: none;
 }
@@ -161,81 +160,54 @@
 .btn-3d-primary {
   background: linear-gradient(180deg, #e53935 0%, #d32f2f 55%, #c62828 100%) !important;
   color: #fff !important;
-  box-shadow: 0 4px 0 #9a1b1b, 0 6px 16px rgba(211, 47, 47, 0.28);
+  border: 2px solid #9a1b1b !important;
+  box-shadow: 0 4px 0 #9a1b1b;
 }
 
 .btn-3d-primary:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 6px 0 #9a1b1b, 0 10px 22px rgba(211, 47, 47, 0.32);
-}
-
-.btn-3d-primary:active {
-  transform: translateY(3px);
-  box-shadow: 0 1px 0 #9a1b1b, 0 3px 8px rgba(211, 47, 47, 0.2);
+  filter: brightness(1.05);
 }
 
 .btn-3d-white {
   background: linear-gradient(180deg, #ffffff 0%, #f0f0f0 100%) !important;
   color: #d32f2f !important;
-  box-shadow: 0 4px 0 #d0d0d0, 0 6px 16px rgba(0, 0, 0, 0.12);
+  border: 2px solid #d0d0d0 !important;
+  box-shadow: 0 4px 0 #d0d0d0;
 }
 
 .btn-3d-white:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 6px 0 #d0d0d0, 0 10px 22px rgba(0, 0, 0, 0.15);
-}
-
-.btn-3d-white:active {
-  transform: translateY(3px);
-  box-shadow: 0 1px 0 #d0d0d0, 0 3px 8px rgba(0, 0, 0, 0.1);
+  filter: brightness(1.02);
 }
 
 .btn-3d-outline {
   background: linear-gradient(180deg, #ffffff 0%, #fafafa 100%) !important;
   color: #d32f2f !important;
   border: 2px solid #d32f2f !important;
-  box-shadow: 0 4px 0 #d32f2f, 0 4px 12px rgba(211, 47, 47, 0.15);
+  box-shadow: 0 4px 0 #d32f2f;
 }
 
 .btn-3d-outline:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 6px 0 #d32f2f, 0 8px 18px rgba(211, 47, 47, 0.2);
-}
-
-.btn-3d-outline:active {
-  transform: translateY(3px);
-  box-shadow: 0 1px 0 #d32f2f, 0 3px 8px rgba(211, 47, 47, 0.12);
+  filter: brightness(1.02);
 }
 
 .btn-3d-whatsapp {
   background: linear-gradient(180deg, #2edb5e 0%, #25d366 55%, #1da851 100%) !important;
   color: #fff !important;
-  box-shadow: 0 4px 0 #128c7e, 0 6px 16px rgba(37, 211, 102, 0.3);
+  border: 2px solid #128c7e !important;
+  box-shadow: 0 4px 0 #128c7e;
 }
 
 .btn-3d-whatsapp:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 6px 0 #128c7e, 0 10px 22px rgba(37, 211, 102, 0.35);
-}
-
-.btn-3d-whatsapp:active {
-  transform: translateY(3px);
-  box-shadow: 0 1px 0 #128c7e, 0 3px 8px rgba(37, 211, 102, 0.22);
+  filter: brightness(1.05);
 }
 
 .btn-3d-glass {
   background: linear-gradient(180deg, rgba(255, 255, 255, 0.28) 0%, rgba(255, 255, 255, 0.12) 100%) !important;
   color: #fff !important;
   border: 2px solid rgba(255, 255, 255, 0.45) !important;
-  box-shadow: 0 4px 0 rgba(255, 255, 255, 0.2), 0 6px 16px rgba(0, 0, 0, 0.15);
+  box-shadow: 0 4px 0 rgba(255, 255, 255, 0.2);
 }
 
 .btn-3d-glass:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 6px 0 rgba(255, 255, 255, 0.25), 0 10px 22px rgba(0, 0, 0, 0.18);
-}
-
-.btn-3d-glass:active {
-  transform: translateY(3px);
-  box-shadow: 0 1px 0 rgba(255, 255, 255, 0.15), 0 3px 8px rgba(0, 0, 0, 0.12);
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.34) 0%, rgba(255, 255, 255, 0.16) 100%) !important;
 }

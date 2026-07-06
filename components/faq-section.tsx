@@ -1,6 +1,7 @@
 'use client'
 
 import { useState } from 'react'
+import { button3d } from '@/lib/button-3d'
 import {
   IconChevronDown,
   IconHelp,
@@ -66,7 +67,7 @@ export default function FaqSection() {
                   href="https://wa.me/628123456789?text=Halo%2C%20saya%20punya%20pertanyaan%20tentang%20custom%20printing"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="btn-3d btn-3d-primary px-6 py-2.5 text-sm w-full sm:w-auto"
+                  className={button3d('primary', 'px-6 py-2.5 text-sm w-full sm:w-auto')}
                 >
                   <IconMessageCircle size={18} stroke={1.5} />
                   Tanya Sekarang

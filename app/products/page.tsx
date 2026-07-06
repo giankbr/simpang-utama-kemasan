@@ -1,5 +1,4 @@
-import Header from '@/components/header'
-import Footer from '@/components/footer'
+import { button3d } from '@/lib/button-3d'
 import { IconPackage, IconBox, IconCup, IconCylinder } from '@tabler/icons-react'
 
 const kemasanTypes = [
@@ -39,9 +38,7 @@ const kemasanTypes = [
 
 export default function ProductsPage() {
   return (
-    <>
-      <Header />
-      <main>
+    <main>
         <section className="py-12 md:py-20 bg-gradient-to-r from-primary to-accent text-white">
           <div className="max-w-7xl mx-auto px-4">
             <h1 className="text-4xl md:text-5xl font-bold mb-4">Jenis Kemasan</h1>
@@ -94,14 +91,12 @@ export default function ProductsPage() {
             </p>
             <a
               href="https://wa.me/628123456789"
-              className="inline-block btn-3d btn-3d-white px-8 py-3"
+              className={button3d('white', 'px-8 py-3')}
             >
               Hubungi Tim Kami
             </a>
           </div>
         </section>
-      </main>
-      <Footer />
-    </>
+    </main>
   )
 }

@@ -2,27 +2,10 @@
 
 import Link from 'next/link'
 import { IconArrowRight } from '@tabler/icons-react'
+import { button3d } from '@/lib/button-3d'
+import { caseStudies } from '@/lib/case-studies'
 
 const tabs = ['Studi Kasus', 'Success Story', 'Portofolio', 'Event', 'Blog'] as const
-
-const articles = [
-  {
-    id: 1,
-    title: 'Bagaimana Brand F&B Menjaga Shelf Life Produk Tetap Terjaga?',
-    excerpt:
-      'Sebagai produsen makanan yang memasarkan produknya di pasar ritel modern, ada banyak tantangan untuk menjaga kualitas. Jenis kemasan yang tepat menjadi kunci.',
-    category: 'Studi Kasus',
-    image: 'https://images.unsplash.com/photo-1555507036-ab1f4038808a?w=600&h=400&fit=crop',
-  },
-  {
-    id: 2,
-    title: 'Cerita Re-Branding dengan Kemasan Full Color Custom',
-    excerpt:
-      'Brand lokal membuktikan potensi kemasan fleksibel sebagai media branding. Dengan cetak full color dari Simpang Utama Kemasan, mereka berhasil upgrade tampilan produk.',
-    category: 'Success Story',
-    image: 'https://images.unsplash.com/photo-1582735809210-2b4b5b5b5b5b?w=600&h=400&fit=crop',
-  },
-]
 
 export default function InspirationSection() {
   return (
@@ -50,10 +33,11 @@ export default function InspirationSection() {
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8">
-          {articles.map((article) => (
-            <article
-              key={article.id}
-              className="bg-light-gray rounded-lg overflow-hidden shadow-md hover:shadow-xl transition group"
+          {caseStudies.map((article) => (
+            <Link
+              key={article.slug}
+              href={`/studi-kasus/${article.slug}`}
+              className="bg-light-gray rounded-lg overflow-hidden shadow-md hover:shadow-xl transition group block"
             >
               <div className="aspect-video overflow-hidden">
                 <img
@@ -75,15 +59,12 @@ export default function InspirationSection() {
                   <IconArrowRight size={16} stroke={1.5} />
                 </span>
               </div>
-            </article>
+            </Link>
           ))}
         </div>
 
         <div className="text-center mt-10">
-          <Link
-            href="/about"
-            className="btn-3d btn-3d-outline px-6 py-3 text-sm"
-          >
+          <Link href="/studi-kasus" className={button3d('primary', 'px-6 py-3 text-sm')}>
             Lihat Semua
             <IconArrowRight size={18} stroke={1.5} />
           </Link>

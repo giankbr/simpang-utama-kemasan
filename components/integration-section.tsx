@@ -1,5 +1,6 @@
 import Link from 'next/link'
 import { IconArrowRight, IconLayersLinked, IconPalette, IconTruck } from '@tabler/icons-react'
+import { button3d } from '@/lib/button-3d'
 
 const highlights = [
   {
@@ -34,7 +35,7 @@ export default function IntegrationSection() {
             </p>
             <Link
               href="/custom-printing"
-              className="btn-3d btn-3d-primary px-6 py-3 text-sm md:text-base"
+              className={button3d('primary', 'px-6 py-3 text-sm md:text-base')}
             >
               Lihat Detail
               <IconArrowRight size={18} stroke={1.5} />
