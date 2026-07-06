@@ -1,5 +1,13 @@
 import Link from 'next/link'
-import { IconBrandWhatsapp, IconMail, IconMapPin, IconPhone } from '@tabler/icons-react'
+import {
+  IconBrandWhatsapp,
+  IconBrandInstagram,
+  IconBrandFacebook,
+  IconBrandLinkedin,
+  IconMail,
+  IconMapPin,
+  IconPhone,
+} from '@tabler/icons-react'
 
 const footerLinks = {
   tentang: [
@@ -20,9 +28,9 @@ const footerLinks = {
 }
 
 const socialLinks = [
-  { label: 'Instagram', href: '#' },
-  { label: 'Facebook', href: '#' },
-  { label: 'LinkedIn', href: '#' },
+  { label: 'Instagram', href: 'https://www.instagram.com/simpangutamakemasan/', Icon: IconBrandInstagram },
+  { label: 'Facebook', href: '#', Icon: IconBrandFacebook },
+  { label: 'LinkedIn', href: '#', Icon: IconBrandLinkedin },
 ]
 
 export default function Footer() {
@@ -151,14 +159,17 @@ export default function Footer() {
               </li>
             </ul>
 
-            <div className="flex gap-4 mt-5">
+            <div className="flex items-center gap-3 mt-5">
               {socialLinks.map((social) => (
                 <a
                   key={social.label}
                   href={social.href}
-                  className="text-xs text-white/50 hover:text-white transition uppercase tracking-wide"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label={social.label}
+                  className="flex h-9 w-9 items-center justify-center rounded-full bg-white/10 text-white/70 hover:bg-white/20 hover:text-white transition"
                 >
-                  {social.label}
+                  <social.Icon size={18} stroke={1.5} />
                 </a>
               ))}
             </div>

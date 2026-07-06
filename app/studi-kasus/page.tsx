@@ -11,14 +11,11 @@ export const metadata: Metadata = {
 
 export default function CaseStudiesPage() {
   return (
-    <main className="bg-white">
-      <section className="border-b border-border">
-        <div className="max-w-7xl mx-auto px-4 py-14 md:py-20">
-          <p className="text-xs font-semibold uppercase tracking-widest text-muted-foreground mb-3">
-            Portofolio
-          </p>
-          <h1 className="text-4xl md:text-5xl font-bold text-foreground mb-4">Studi Kasus</h1>
-          <p className="text-lg text-muted-foreground max-w-2xl leading-relaxed">
+    <main>
+      <section className="py-12 md:py-20 bg-gradient-to-r from-primary to-accent text-white">
+        <div className="max-w-7xl mx-auto px-4">
+          <h1 className="text-4xl md:text-5xl font-bold mb-4">Studi Kasus</h1>
+          <p className="text-lg text-white text-opacity-90 max-w-2xl leading-relaxed">
             Kisah nyata brand yang berhasil meningkatkan kualitas produk, tampilan, dan performa
             penjualan lewat solusi kemasan fleksibel custom full color.
           </p>
