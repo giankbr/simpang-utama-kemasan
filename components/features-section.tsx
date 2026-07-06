@@ -9,28 +9,36 @@ import {
 
 const features = [
   {
+    index: '01',
     title: 'Minimum Order Hanya 100pcs, Tanpa Investasi Plat',
     description:
       'Kamu bebas cetak kemasan fleksibel dengan unlimited desain dan warna apapun tanpa perlu investasi plat.',
     Icon: IconPackage,
+    tag: 'Fleksibel',
   },
   {
+    index: '02',
     title: 'Bukan Paper Foil',
     description:
       'Material terbaik (Aluminium, Nylon, OPP) sehingga kemasan tidak terkelupas, tahan air, mencegah oksigen masuk, dan melindungi kualitas produk dengan maksimal.',
     Icon: IconLayersLinked,
+    tag: 'Material Premium',
   },
   {
+    index: '03',
     title: 'Terjamin Food Grade',
     description:
       'Mau kemasan food grade untuk produk makanan? Bisa banget! Standarisasi food grade menjamin produk makananmu tetap aman.',
     Icon: IconShieldCheck,
+    tag: 'Aman & Higienis',
   },
   {
+    index: '04',
     title: 'Desain Kemasan Tidak Terbatas',
     description:
       'Bikin pelanggan jatuh cinta dengan desain full color di kemasan produkmu! Cetak dengan beragam warna tanpa biaya berlebih.',
     Icon: IconPalette,
+    tag: 'Full Color',
   },
 ]
 
@@ -38,28 +46,47 @@ export default function FeaturesSection() {
   return (
     <section className="py-16 md:py-24 bg-white">
       <div className="max-w-7xl mx-auto px-4">
-        <div className="text-center mb-16">
-          <h2 className="text-3xl md:text-5xl font-bold text-foreground mb-4">
+        <div className="text-center max-w-3xl mx-auto mb-12 md:mb-16">
+          <p className="text-xs font-semibold uppercase tracking-widest text-primary mb-3">
+            Keunggulan Kami
+          </p>
+          <h2 className="text-3xl md:text-5xl font-bold text-foreground mb-4 leading-tight">
             Kenapa Simpang Utama Kemasan? Karena Kami Berbeda
           </h2>
+          <p className="text-gray-600 text-base md:text-lg leading-relaxed">
+            Solusi kemasan fleksibel custom dengan kualitas material, layanan, dan fleksibilitas
+            order yang membantu brand Anda tumbuh lebih cepat.
+          </p>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-6">
           {features.map((feature) => (
-            <div
+            <article
               key={feature.title}
-              className="bg-white rounded-lg p-6 md:p-8 shadow-md hover:shadow-lg transition"
+              className="group relative overflow-hidden rounded-2xl border border-border bg-light-gray p-6 md:p-8 transition duration-300 hover:border-primary/30 hover:bg-white hover:shadow-xl hover:shadow-primary/5"
             >
-              <div className="w-14 h-14 rounded-xl bg-primary/10 flex items-center justify-center mb-5">
-                <feature.Icon size={32} stroke={1.5} className="text-primary" />
+              <div className="absolute inset-x-0 top-0 h-1 bg-gradient-to-r from-primary to-accent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+
+              <div className="flex items-start justify-between gap-4 mb-6">
+                <div className="w-14 h-14 rounded-2xl bg-primary text-white flex items-center justify-center shadow-[0_4px_0_#9a1b1b] transition duration-300 group-hover:scale-105">
+                  <feature.Icon size={28} stroke={1.5} />
+                </div>
+                <span className="text-3xl md:text-4xl font-bold text-primary/15 leading-none select-none">
+                  {feature.index}
+                </span>
               </div>
-              <h3 className="text-lg md:text-xl font-bold text-foreground mb-3">
+
+              <span className="inline-block text-[11px] font-bold uppercase tracking-wider text-primary bg-primary/10 px-2.5 py-1 rounded-full mb-3">
+                {feature.tag}
+              </span>
+
+              <h3 className="text-lg md:text-xl font-bold text-foreground mb-3 leading-snug">
                 {feature.title}
               </h3>
               <p className="text-gray-600 text-sm md:text-base leading-relaxed">
                 {feature.description}
               </p>
-            </div>
+            </article>
           ))}
         </div>
       </div>

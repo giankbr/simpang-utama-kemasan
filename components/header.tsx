@@ -178,82 +178,112 @@ export default function Header() {
       </div>
 
       {isOpen && (
-        <nav
-          className="fixed inset-x-0 bottom-0 z-40 lg:hidden bg-white flex flex-col border-t border-border"
-          style={{ top: headerHeight }}
-          aria-label="Mobile navigation"
-        >
-          <div className="flex-1 overflow-y-auto px-4 py-2">
-            <div className="border-b border-border">
-              <button
-                onClick={() => toggleDropdown('kemasan-mobile')}
-                className="flex items-center justify-between w-full py-4 font-medium text-sm"
-              >
-                Kemasan
-                <IconChevronDown
-                  size={16}
-                  stroke={1.5}
-                  className={`transition ${openDropdown === 'kemasan-mobile' ? 'rotate-180' : ''}`}
-                />
-              </button>
-              {openDropdown === 'kemasan-mobile' && (
-                <div className="pb-3 pl-4 space-y-1">
-                  {kemasanItems.map((item) => (
-                    <Link
-                      key={item.name}
-                      href={item.href}
-                      className="block py-2.5 text-sm text-gray-600"
-                      onClick={closeMenu}
-                    >
-                      {item.name}
-                    </Link>
-                  ))}
-                </div>
-              )}
-            </div>
+        <>
+          <button
+            type="button"
+            className="fixed inset-0 z-40 bg-black/30 lg:hidden"
+            style={{ top: headerHeight }}
+            onClick={closeMenu}
+            aria-label="Tutup menu"
+          />
+          <nav
+            className="fixed inset-x-0 bottom-0 z-50 lg:hidden bg-white flex flex-col shadow-2xl"
+            style={{ top: headerHeight }}
+            aria-label="Mobile navigation"
+          >
+            <div className="flex-1 overflow-y-auto px-4 py-5">
+              <p className="text-xs font-semibold uppercase tracking-widest text-muted-foreground mb-3 px-1">
+                Menu
+              </p>
 
-            {menuItems.map((item) =>
-              item.children ? (
-                <div key={item.name} className="border-b border-border">
+              <div className="space-y-2">
+                <div className="rounded-xl border border-border overflow-hidden">
                   <button
-                    onClick={() => toggleDropdown(`mobile-${item.name}`)}
-                    className="flex items-center justify-between w-full py-4 font-medium text-sm"
+                    type="button"
+                    onClick={() => toggleDropdown('kemasan-mobile')}
+                    className="flex items-center justify-between w-full px-4 py-3.5 font-semibold text-sm text-foreground bg-white"
                   >
-                    {item.name}
+                    Kemasan
                     <IconChevronDown
-                      size={16}
+                      size={18}
                       stroke={1.5}
-                      className={`transition ${openDropdown === `mobile-${item.name}` ? 'rotate-180' : ''}`}
+                      className={`text-primary transition ${openDropdown === 'kemasan-mobile' ? 'rotate-180' : ''}`}
                     />
                   </button>
-                  {openDropdown === `mobile-${item.name}` && (
-                    <div className="pb-3 pl-4 space-y-1">
-                      {item.children.map((child) => (
+                  {openDropdown === 'kemasan-mobile' && (
+                    <div className="px-3 pb-3 pt-1 bg-light-gray border-t border-border space-y-1">
+                      {kemasanItems.map((item) => (
                         <Link
-                          key={child.name}
-                          href={child.href}
-                          className="block py-2.5 text-sm text-gray-600"
+                          key={item.name}
+                          href={item.href}
+                          className="block rounded-lg px-3 py-2.5 text-sm text-gray-700 hover:bg-white hover:text-primary transition"
                           onClick={closeMenu}
                         >
-                          {child.name}
+                          {item.name}
                         </Link>
                       ))}
                     </div>
                   )}
                 </div>
-              ) : (
-                <Link
-                  key={item.name}
-                  href={item.href}
-                  className="flex items-center w-full py-4 border-b border-border font-medium text-sm"
-                  onClick={closeMenu}
-                >
-                  {item.name}
-                </Link>
-              )
-            )}
-          </div>
-        </nav>
+
+                {menuItems.map((item) =>
+                  item.children ? (
+                    <div key={item.name} className="rounded-xl border border-border overflow-hidden">
+                      <button
+                        type="button"
+                        onClick={() => toggleDropdown(`mobile-${item.name}`)}
+                        className="flex items-center justify-between w-full px-4 py-3.5 font-semibold text-sm text-foreground bg-white"
+                      >
+                        {item.name}
+                        <IconChevronDown
+                          size={18}
+                          stroke={1.5}
+                          className={`text-primary transition ${openDropdown === `mobile-${item.name}` ? 'rotate-180' : ''}`}
+                        />
+                      </button>
+                      {openDropdown === `mobile-${item.name}` && (
+                        <div className="px-3 pb-3 pt-1 bg-light-gray border-t border-border space-y-1">
+                          {item.children.map((child) => (
+                            <Link
+                              key={child.name}
+                              href={child.href}
+                              className="block rounded-lg px-3 py-2.5 text-sm text-gray-700 hover:bg-white hover:text-primary transition"
+                              onClick={closeMenu}
+                            >
+                              {child.name}
+                            </Link>
+                          ))}
+                        </div>
+                      )}
+                    </div>
+                  ) : (
+                    <Link
+                      key={item.name}
+                      href={item.href}
+                      className="flex items-center w-full px-4 py-3.5 rounded-xl border border-border font-semibold text-sm text-foreground hover:border-primary/30 hover:bg-light-gray transition"
+                      onClick={closeMenu}
+                    >
+                      {item.name}
+                    </Link>
+                  ),
+                )}
+              </div>
+            </div>
+
+            <div className="shrink-0 border-t border-border bg-white px-4 py-4 pb-[max(1rem,env(safe-area-inset-bottom))]">
+              <a
+                href={whatsappUrl('Halo, saya ingin konsultasi kemasan dari Simpang Utama Kemasan.')}
+                target="_blank"
+                rel="noopener noreferrer"
+                className={button3d('primary', 'w-full py-3 text-sm justify-center')}
+                onClick={closeMenu}
+              >
+                <IconBrandWhatsapp size={18} stroke={1.5} />
+                Hubungi Kami
+              </a>
+            </div>
+          </nav>
+        </>
       )}
     </header>
   )
