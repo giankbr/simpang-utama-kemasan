@@ -1,45 +1,43 @@
-'use client'
-
 const categories = [
   {
     id: 1,
     name: 'Kemasan Kopi, Teh & Bubuk Minuman',
-    image: 'https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?w=600&h=450&fit=crop',
+    image: '/categories/kopi.svg',
   },
   {
     id: 2,
     name: 'Kemasan Kosmetik & Obat',
-    image: 'https://images.unsplash.com/photo-1556228720-195a672e8a03?w=600&h=450&fit=crop',
+    image: '/categories/kosmetik.svg',
   },
   {
     id: 3,
     name: 'Kemasan Bumbu Dapur',
-    image: 'https://images.unsplash.com/photo-1596040033229-a9829bd0f257?w=600&h=450&fit=crop',
+    image: '/categories/bumbu.svg',
   },
   {
     id: 4,
     name: 'Kemasan Frozen Food',
-    image: 'https://images.unsplash.com/photo-1626204050388-1e6e05e42687?w=600&h=450&fit=crop',
+    image: '/categories/frozen.svg',
   },
   {
     id: 5,
     name: 'Kemasan Makanan Ringan',
-    image: 'https://images.unsplash.com/photo-1566478989037-eec170784d0b?w=600&h=450&fit=crop',
+    image: '/categories/snack.svg',
   },
   {
     id: 6,
     name: 'Kemasan Roti & Kue',
-    image: 'https://images.unsplash.com/photo-1509440159596-0249088772ff?w=600&h=450&fit=crop',
+    image: '/categories/roti.svg',
   },
   {
     id: 7,
     name: 'Kemasan Bibit Tanaman',
-    image: 'https://images.unsplash.com/photo-1416879595882-3373a0480b5b?w=600&h=450&fit=crop',
+    image: '/categories/bibit.svg',
   },
   {
     id: 8,
     name: 'Kemasan Makanan Hewan',
-    image: 'https://images.unsplash.com/photo-1583337130417-3346a1be7dee?w=600&h=450&fit=crop',
+    image: '/categories/hewan.svg',
   },
 ]
 
@@ -63,7 +61,7 @@ export default function CategoriesSection() {
               href="/products"
               className="group flex flex-col rounded-xl border border-border bg-white overflow-hidden hover:shadow-lg hover:border-primary/20 transition duration-300"
             >
-              <div className="aspect-[4/3] overflow-hidden">
+              <div className="aspect-[4/3] overflow-hidden bg-light-gray">
                 <img
                   src={category.image}
                   alt={category.name}

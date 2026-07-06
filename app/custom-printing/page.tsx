@@ -94,25 +94,27 @@ export default function CustomPrintingPage() {
         {/* Process Section */}
         <section className="py-16 md:py-24 bg-white">
           <div className="max-w-7xl mx-auto px-4">
-            <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-12 text-center">Proses Custom Printing</h2>
-            <div className="grid grid-cols-1 md:grid-cols-5 gap-4">
-              {process.map((item, idx) => (
-                <div key={idx} className="relative">
-                  {/* Step Circle */}
-                  <div className="flex flex-col items-center mb-4">
-                    <div className="w-16 h-16 bg-primary rounded-full flex items-center justify-center text-white font-bold text-xl mb-4">
+            <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-12 text-center">
+              Proses Custom Printing
+            </h2>
+
+            <div className="relative">
+              <div
+                className="hidden md:block absolute top-8 left-[10%] right-[10%] h-0.5 bg-primary/25 pointer-events-none"
+                aria-hidden
+              />
+
+              <ol className="grid grid-cols-1 md:grid-cols-5 gap-10 md:gap-4 relative">
+                {process.map((item) => (
+                  <li key={item.step} className="flex flex-col items-center text-center px-2">
+                    <div className="relative z-10 w-16 h-16 bg-primary rounded-full flex items-center justify-center text-white font-bold text-xl ring-4 ring-white shrink-0">
                       {item.step}
                     </div>
-                    <h3 className="text-lg font-bold text-foreground text-center">{item.title}</h3>
-                    <p className="text-gray-600 text-sm text-center mt-2">{item.description}</p>
-                  </div>
-
-                  {/* Connector Line */}
-                  {idx < process.length - 1 && (
-                    <div className="hidden md:block absolute top-8 left-full w-full h-0.5 bg-accent" style={{ width: 'calc(100% - 4rem)' }}></div>
-                  )}
-                </div>
-              ))}
+                    <h3 className="text-lg font-bold text-foreground mt-4">{item.title}</h3>
+                    <p className="text-gray-600 text-sm mt-2 leading-relaxed">{item.description}</p>
+                  </li>
+                ))}
+              </ol>
             </div>
           </div>
         </section>

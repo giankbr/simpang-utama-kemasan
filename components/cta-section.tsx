@@ -1,4 +1,5 @@
 import { IconArrowRight } from '@tabler/icons-react'
+import { button3d } from '@/lib/button-3d'
 
 const WHATSAPP_URL =
   'https://wa.me/628123456789?text=Halo%2C%20saya%20ingin%20menanyakan%20penawaran%20kemasan%20dari%20Simpang%20Utama%20Kemasan'
@@ -52,7 +53,7 @@ export default function CTASection() {
             href={WHATSAPP_URL}
             target="_blank"
             rel="noopener noreferrer"
-            className="inline-flex items-center justify-center gap-2 bg-white text-[#0c1f3d] font-semibold rounded-full px-8 py-3.5 text-sm md:text-base hover:bg-white/95 transition shrink-0 self-start md:self-center"
+            className={button3d('primary', 'px-8 py-3.5 text-sm md:text-base shrink-0 self-start md:self-center')}
           >
             Konsultasi Gratis
             <IconArrowRight size={18} stroke={2} />

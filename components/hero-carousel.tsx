@@ -1,6 +1,7 @@
 'use client'
 
 import { useState, useEffect } from 'react'
+import { IconChevronLeft, IconChevronRight } from '@tabler/icons-react'
 
 const WHATSAPP_URL =
   'https://wa.me/628123456789?text=Halo%2C%20saya%20ingin%20menanyakan%20tentang%20kemasan%20custom%20dari%20Simpang%20Utama%20Kemasan'
@@ -47,21 +48,17 @@ export default function HeroCarousel() {
       <div className="relative w-full aspect-video md:aspect-auto md:h-[500px] lg:h-[600px]">
         <button
           onClick={prev}
-          className="absolute left-4 top-1/2 -translate-y-1/2 z-30 p-2 hover:bg-white hover:bg-opacity-20 rounded transition"
+          className="group absolute left-3 md:left-4 top-1/2 -translate-y-1/2 z-30 flex h-10 w-10 md:h-11 md:w-11 items-center justify-center rounded-full bg-black/35 text-white backdrop-blur-sm transition hover:bg-white hover:text-primary"
           aria-label="Previous slide"
         >
-          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="28" viewBox="0 0 16 28" fill="none">
-            <path d="M14 26L2 14L14 2" stroke="white" strokeWidth="4" strokeLinecap="round" strokeLinejoin="round" />
-          </svg>
+          <IconChevronLeft size={22} stroke={2} className="transition-colors" />
         </button>
         <button
           onClick={next}
-          className="absolute right-4 top-1/2 -translate-y-1/2 z-30 p-2 hover:bg-white hover:bg-opacity-20 rounded transition"
+          className="group absolute right-3 md:right-4 top-1/2 -translate-y-1/2 z-30 flex h-10 w-10 md:h-11 md:w-11 items-center justify-center rounded-full bg-black/35 text-white backdrop-blur-sm transition hover:bg-white hover:text-primary"
           aria-label="Next slide"
         >
-          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="28" viewBox="0 0 16 28" fill="none">
-            <path d="M2 2L14 14L2 26" stroke="white" strokeWidth="4" strokeLinecap="round" strokeLinejoin="round" />
-          </svg>
+          <IconChevronRight size={22} stroke={2} className="transition-colors" />
         </button>
 
         {slides.map((slide, index) => (
@@ -105,7 +102,7 @@ export default function HeroCarousel() {
               key={index}
               onClick={() => setCurrent(index)}
               className={`w-2 h-2 md:w-3 md:h-3 rounded-full transition ${
-                index === current ? 'bg-white' : 'bg-white bg-opacity-50'
+                index === current ? 'bg-white' : 'bg-white/50'
               }`}
               aria-label={`Go to slide ${index + 1}`}
             />

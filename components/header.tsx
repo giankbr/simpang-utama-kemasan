@@ -156,12 +156,14 @@ export default function Header() {
           </nav>
 
           <div className="flex items-center gap-1 flex-shrink-0">
-            <a
-              href="https://wa.me/628123456789"
-              className={button3d('primary', 'hidden lg:inline-flex px-6 py-2.5 text-sm')}
-            >
-              Hubungi Kami
-            </a>
+            <div className="hidden lg:block">
+              <a
+                href="https://wa.me/628123456789"
+                className={button3d('primary', 'px-6 py-2.5 text-sm')}
+              >
+                Hubungi Kami
+              </a>
+            </div>
             <button
               onClick={() => setIsOpen(!isOpen)}
               className="lg:hidden p-2 -mr-1 hover:bg-secondary rounded-lg"
@@ -249,16 +251,6 @@ export default function Header() {
                 </Link>
               )
             )}
-          </div>
-
-          <div className="p-4 border-t border-border bg-white">
-            <a
-              href="https://wa.me/628123456789"
-              className={button3d('primary', 'w-full py-3.5 text-sm text-center')}
-              onClick={closeMenu}
-            >
-              Hubungi Kami
-            </a>
           </div>
         </nav>
       )}

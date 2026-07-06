@@ -5,14 +5,28 @@ import { button3d } from '@/lib/button-3d'
 import {
   IconChevronDown,
   IconHelp,
-  IconMessageCircle,
+  IconBrandWhatsapp,
   IconPackage,
   IconClock,
   IconPalette,
   IconBrush,
+  type Icon,
 } from '@tabler/icons-react'
 
-const faqs = [
+type FaqItem = {
+  question: string
+  answer: string
+  Icon: Icon
+}
+
+type FaqSectionProps = {
+  title?: string
+  description?: string
+  faqs?: FaqItem[]
+  whatsappMessage?: string
+}
+
+const customPrintingFaqs: FaqItem[] = [
   {
     question: 'Berapa minimum order untuk custom printing?',
     answer:
@@ -39,7 +53,39 @@ const faqs = [
   },
 ]
 
-export default function FaqSection() {
+const homeFaqs: FaqItem[] = [
+  {
+    question: 'Berapa minimum order kemasan fleksibel?',
+    answer:
+      'Minimum order mulai dari 100 PCS per desain, tanpa investasi plat cetak. Cocok untuk UMKM maupun brand yang ingin uji pasar.',
+    Icon: IconPackage,
+  },
+  {
+    question: 'Jenis kemasan apa saja yang tersedia?',
+    answer:
+      'Kami menyediakan sachet, standing pouch, roll stock, lid cup, dan berbagai kemasan fleksibel custom full color untuk berbagai industri.',
+    Icon: IconPalette,
+  },
+  {
+    question: 'Berapa lama waktu produksi?',
+    answer:
+      'Rata-rata 7-14 hari kerja setelah desain disetujui, tergantung jenis kemasan, volume order, dan kompleksitas cetak.',
+    Icon: IconClock,
+  },
+  {
+    question: 'Apakah ada layanan desain kemasan?',
+    answer:
+      'Ya, tim kami siap membantu dari konsultasi, desain mockup, hingga produksi — termasuk revisi sebelum dicetak masal.',
+    Icon: IconBrush,
+  },
+]
+
+export default function FaqSection({
+  title = 'Pertanyaan Umum',
+  description = 'Punya pertanyaan seputar layanan custom printing? Berikut jawaban untuk hal yang paling sering ditanyakan pelanggan kami.',
+  faqs = customPrintingFaqs,
+  whatsappMessage = 'Halo%2C%20saya%20punya%20pertanyaan%20tentang%20custom%20printing',
+}: FaqSectionProps) {
   const [openIndex, setOpenIndex] = useState(0)
 
   return (
@@ -51,25 +97,20 @@ export default function FaqSection() {
               <div className="w-14 h-14 rounded-2xl bg-primary/10 flex items-center justify-center mb-6">
                 <IconHelp size={28} stroke={1.5} className="text-primary" />
               </div>
-              <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-4">
-                Pertanyaan Umum
-              </h2>
-              <p className="text-gray-600 leading-relaxed mb-8">
-                Punya pertanyaan seputar layanan custom printing? Berikut jawaban untuk hal yang
-                paling sering ditanyakan pelanggan kami.
-              </p>
+              <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-4">{title}</h2>
+              <p className="text-gray-600 leading-relaxed mb-8">{description}</p>
               <div className="bg-white rounded-2xl p-6 shadow-md border border-border">
                 <p className="text-sm font-semibold text-foreground mb-2">Masih ada pertanyaan?</p>
                 <p className="text-sm text-gray-600 mb-4">
                   Tim kami siap bantu via WhatsApp dalam hitungan menit.
                 </p>
                 <a
-                  href="https://wa.me/628123456789?text=Halo%2C%20saya%20punya%20pertanyaan%20tentang%20custom%20printing"
+                  href={`https://wa.me/628123456789?text=${whatsappMessage}`}
                   target="_blank"
                   rel="noopener noreferrer"
                   className={button3d('primary', 'px-6 py-2.5 text-sm w-full sm:w-auto')}
                 >
-                  <IconMessageCircle size={18} stroke={1.5} />
+                  <IconBrandWhatsapp size={18} stroke={1.5} />
                   Tanya Sekarang
                 </a>
               </div>
@@ -132,3 +173,5 @@ export default function FaqSection() {
     </section>
   )
 }
+
+export { homeFaqs, customPrintingFaqs }
