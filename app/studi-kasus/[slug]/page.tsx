@@ -134,7 +134,7 @@ export default async function CaseStudyDetailPage({ params }: PageProps) {
             </article>
           </div>
 
-          <div className="mt-14 p-6 md:p-8 rounded-2xl bg-[#0c1f3d] text-white flex flex-col md:flex-row md:items-center md:justify-between gap-6">
+          <div className="mt-14 p-6 md:p-8 rounded-2xl bg-primary text-white flex flex-col md:flex-row md:items-center md:justify-between gap-6">
             <div className="max-w-2xl">
               <h2 className="text-xl md:text-2xl font-bold mb-2">
                 Butuh solusi kemasan serupa untuk brand Anda?

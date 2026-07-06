@@ -61,7 +61,7 @@ export const caseStudies: CaseStudy[] = [
         bullets: [
           'Material metallized dengan barrier OTR & MVTR lebih rendah',
           'Zip lock untuk menjaga kesegaran setelah pouch dibuka',
-          'Cetak full color digital — minimum order fleksibel',
+          'Cetak full color digital, minimum order fleksibel',
           'Konsultasi desain gratis untuk informasi nutrisi & penyimpanan',
         ],
       },
@@ -96,7 +96,7 @@ export const caseStudies: CaseStudy[] = [
         heading: 'Latar Belakang',
         paragraphs: [
           'Snack Brand Nusantara adalah UMKM yang sudah berjualan di pasar tradisional selama bertahun-tahun. Saat mereka memutuskan masuk ke e-commerce dan retail modern, kemasan lama yang polos dan tanpa identitas visual kuat membuat produk sulit bersaing di rak.',
-          'Mereka membutuhkan rebranding total tanpa investasi plat cetak yang besar — budget masih terbatas dan SKU baru sering ditambahkan.',
+          'Mereka membutuhkan rebranding total tanpa investasi plat cetak yang besar, karena budget masih terbatas dan SKU baru sering ditambahkan.',
         ],
       },
       {
@@ -115,7 +115,7 @@ export const caseStudies: CaseStudy[] = [
         heading: 'Solusi',
         paragraphs: [
           'Simpang Utama Kemasan menyediakan paket rebranding end-to-end: konsultasi desain, mockup digital, dan produksi sachet 3 side seal full color dengan material food grade. Semua varian rasa menggunakan template desain yang konsisten dengan warna aksen berbeda per SKU.',
-          'Dengan digital printing, brand bisa memesan mulai 100 pcs per desain — ideal untuk uji pasar sebelum scale up.',
+          'Dengan digital printing, brand bisa memesan mulai 100 pcs per desain, ideal untuk uji pasar sebelum scale up.',
         ],
       },
       {

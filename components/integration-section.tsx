@@ -11,7 +11,7 @@ const highlights = [
   {
     Icon: IconLayersLinked,
     title: 'Beragam Jenis Kemasan',
-    description: 'Sachet, standing pouch, roll stock, dan lid cup — pilih sesuai kebutuhan produkmu.',
+    description: 'Sachet, standing pouch, roll stock, dan lid cup, pilih sesuai kebutuhan produkmu.',
   },
   {
     Icon: IconTruck,
@@ -31,7 +31,7 @@ export default function IntegrationSection() {
             </h2>
             <p className="text-gray-600 text-lg mb-6 leading-relaxed">
               Bagaimana kita fleksibel & terintegrasi? Simpang Utama Kemasan menghadirkan solusi
-              kemasan custom dari awal hingga akhir — tanpa ribet, tanpa investasi plat.
+              kemasan custom dari awal hingga akhir, tanpa ribet, tanpa investasi plat.
             </p>
             <Link
               href="/custom-printing"

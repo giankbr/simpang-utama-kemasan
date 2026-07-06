@@ -114,7 +114,10 @@ export default function Footer() {
                 <p className="font-semibold text-white text-sm mb-1">Simpang Utama Kemasan</p>
                 <p className="flex items-start gap-2">
                   <IconMapPin size={16} stroke={1.5} className="flex-shrink-0 mt-0.5" />
-                  <span>Jakarta, Indonesia</span>
+                  <span>
+                    No. 17-20, Jl. Sandubaya Mandalika Blok AA, Bertais, Sandubaya, Mataram City,
+                    West Nusa Tenggara 83236
+                  </span>
                 </p>
               </li>
               <li>

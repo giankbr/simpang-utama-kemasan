@@ -7,7 +7,7 @@ import './globals.css'
 
 export const metadata: Metadata = {
   title: 'Simpang Utama Kemasan | Cetak Kemasan Fleksibel Custom Full Color',
-  description: 'Solusi kemasan fleksibel custom full color untuk berbagai industri. Sachet, standing pouch, roll stock, lid cup — minimum order 100pcs tanpa investasi plat.',
+  description: 'Solusi kemasan fleksibel custom full color untuk berbagai industri. Sachet, standing pouch, roll stock, lid cup, minimum order 100pcs tanpa investasi plat.',
   keywords: 'Simpang Utama Kemasan, kemasan fleksibel, custom printing, sachet, standing pouch, roll stock, food grade',
   applicationName: 'Simpang Utama Kemasan',
   icons: {

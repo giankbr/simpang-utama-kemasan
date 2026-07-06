@@ -6,7 +6,7 @@ const WHATSAPP_URL =
 
 export default function CTASection() {
   return (
-    <section className="relative overflow-hidden bg-[#0c1f3d]">
+    <section className="relative overflow-hidden bg-primary">
       {/* Network pattern — right side */}
       <div
         className="absolute inset-y-0 right-0 w-full md:w-[55%] pointer-events-none opacity-[0.12]"
@@ -46,14 +46,14 @@ export default function CTASection() {
       <div className="relative max-w-7xl mx-auto px-4 py-14 md:py-20 lg:py-24">
         <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-8 md:gap-12">
           <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-white leading-snug max-w-2xl">
-            Cetak Kemasan Fleksibel Custom Full Color — Min. Order 100 pcs, Tanpa Investasi Plat
+            Cetak Kemasan Fleksibel Custom Full Color, Min. Order 100 pcs, Tanpa Investasi Plat
           </h2>
 
           <a
             href={WHATSAPP_URL}
             target="_blank"
             rel="noopener noreferrer"
-            className={button3d('primary', 'px-8 py-3.5 text-sm md:text-base shrink-0 self-start md:self-center')}
+            className={button3d('white', 'px-8 py-3.5 text-sm md:text-base shrink-0 self-start md:self-center')}
           >
             Konsultasi Gratis
             <IconArrowRight size={18} stroke={2} />

@@ -75,7 +75,7 @@ const homeFaqs: FaqItem[] = [
   {
     question: 'Apakah ada layanan desain kemasan?',
     answer:
-      'Ya, tim kami siap membantu dari konsultasi, desain mockup, hingga produksi — termasuk revisi sebelum dicetak masal.',
+      'Ya, tim kami siap membantu dari konsultasi, desain mockup, hingga produksi, termasuk revisi sebelum dicetak masal.',
     Icon: IconBrush,
   },
 ]
