@@ -1,5 +1,12 @@
 export const SITE_NAME = 'Simpang Utama Kemasan'
 
+export const SITE_URL = 'https://simpang-utama-kemasan.vercel.app'
+
+export const SITE_META_TITLE = 'Simpang Utama Kemasan | Cetak Kemasan Fleksibel Custom Full Color'
+
+export const SITE_META_DESCRIPTION =
+  'Solusi kemasan fleksibel custom full color untuk berbagai industri. Sachet, standing pouch, roll stock, lid cup.'
+
 export const SITE_PHONE_DISPLAY = '0819-1801-7888'
 export const SITE_PHONE_E164 = '+6281918017888'
 export const SITE_WHATSAPP_URL = 'https://wa.me/6281918017888'

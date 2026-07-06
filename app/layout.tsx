@@ -4,20 +4,40 @@ import Header from '@/components/header'
 import Footer from '@/components/footer'
 import ChatWidget from '@/components/chat-widget'
 import SmoothScroll from '@/components/smooth-scroll'
+import {
+  SITE_META_DESCRIPTION,
+  SITE_META_TITLE,
+  SITE_NAME,
+  SITE_URL,
+} from '@/lib/site'
 import './globals.css'
 
 export const metadata: Metadata = {
-  title: 'Simpang Utama Kemasan | Cetak Kemasan Fleksibel Custom Full Color',
-  description:
-    'Solusi kemasan fleksibel custom full color untuk berbagai industri. Sachet, standing pouch, roll stock, lid cup.',
-  keywords: 'Simpang Utama Kemasan, kemasan fleksibel, custom printing, sachet, standing pouch, roll stock, food grade',
-  applicationName: 'Simpang Utama Kemasan',
+  metadataBase: new URL(SITE_URL),
+  title: SITE_META_TITLE,
+  description: SITE_META_DESCRIPTION,
+  keywords:
+    'Simpang Utama Kemasan, kemasan fleksibel, custom printing, sachet, standing pouch, roll stock, food grade',
+  applicationName: SITE_NAME,
   icons: {
     icon: {
       url: '/logo.jpg',
       type: 'image/jpeg',
     },
     apple: '/logo.jpg',
+  },
+  openGraph: {
+    type: 'website',
+    locale: 'id_ID',
+    url: SITE_URL,
+    siteName: SITE_NAME,
+    title: SITE_META_TITLE,
+    description: SITE_META_DESCRIPTION,
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: SITE_META_TITLE,
+    description: SITE_META_DESCRIPTION,
   },
 }
 
